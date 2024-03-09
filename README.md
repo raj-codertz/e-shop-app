@@ -1,4 +1,4 @@
-# raj_store_app
+# e-shop-app
 
 A new Flutter project.
 

@@ -7,9 +7,7 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
 class TSignupForm extends StatelessWidget {
-  const TSignupForm({
-    super.key
-  });
+  const TSignupForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,16 +42,21 @@ class TSignupForm extends StatelessWidget {
                   labelText: TTexts.username,
                   prefixIcon: Icon(Iconsax.user_edit)),
             ),
-
+            const SizedBox(height: TSizes.spaceBtwInputFields),
             //   Email
             TextFormField(
               decoration: const InputDecoration(
-                  labelText: TTexts.email,
-                  prefixIcon: Icon(Iconsax.direct)),
+                  labelText: TTexts.email, prefixIcon: Icon(Iconsax.direct)),
             ),
-
-            //   Password
+            const SizedBox(height: TSizes.spaceBtwInputFields),
+            // phone number
             TextFormField(
+              decoration: const InputDecoration(
+                  labelText: TTexts.phoneNo, prefixIcon: Icon(Iconsax.call)),
+            ),
+            const SizedBox(height: TSizes.spaceBtwInputFields
+              //   Password
+              TextFormField(
               obscureText: true,
               decoration: const InputDecoration(
                   labelText: TTexts.password,

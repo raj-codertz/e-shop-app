@@ -54,7 +54,7 @@ class TSignupForm extends StatelessWidget {
               decoration: const InputDecoration(
                   labelText: TTexts.phoneNo, prefixIcon: Icon(Iconsax.call)),
             ),
-            const SizedBox(height: TSizes.spaceBtwInputFields
+            const SizedBox(height: TSizes.spaceBtwInputFields),
               //   Password
               TextFormField(
               obscureText: true,

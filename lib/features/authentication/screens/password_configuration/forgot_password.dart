@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:raj_store_app/features/authentication/screens/password_configuration/reset_password.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import 'package:raj_store_app/utils/constants/text_strings.dart';
 
@@ -12,7 +13,7 @@ class ForgetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,7 +37,8 @@ class ForgetPassword extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {}, child: const Text(TTexts.submit)))
+                    onPressed: () => Get.to(() => const ResetPassword()),
+                    child: const Text(TTexts.submit)))
           ],
         ),
       ),

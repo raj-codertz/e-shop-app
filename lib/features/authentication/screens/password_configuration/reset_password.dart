@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:raj_store_app/app.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import 'package:raj_store_app/utils/constants/text_strings.dart';
 import 'package:raj_store_app/utils/helpers/helper_functions.dart';
-
 import '../../../../utils/constants/image_strings.dart';
 
 class ResetPassword extends StatelessWidget {
@@ -22,9 +20,10 @@ class ResetPassword extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
+
             //   Image with 60% of the screen width
               Image(image: const AssetImage(TImages.deliveredEmailIllustration), width: THelperFunctions.screenWidth() * 0.6),
             const SizedBox(height: TSizes.spaceBtwSections),

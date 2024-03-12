@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raj_store_app/features/shop/screens/home/widgets/home_appbar.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,12 +7,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: Padding(padding: EdgeInsets.all(0),),
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer( child: Container())
+            // Header
+            TPrimaryHeaderContainer(
+                child: Column(
+              children: [
+                // Appbar
+                THomeAppBar()
+                //   Searcher
+                //   Categories
+              ],
+            ))
           ],
         ),
       ),

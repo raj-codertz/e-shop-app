@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -18,12 +18,22 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
               children: [
                 // Appbar
-                THomeAppBar(),
-                SizedBox(height: TSizes.spaceBtwSections),
+                const THomeAppBar(),
+                const SizedBox(height: TSizes.spaceBtwSections),
 
                 //   Searchbar
-                TSearchContainer(text: 'Search in Store')
+                const TSearchContainer(text: 'Search in Store'),
+                const SizedBox(height: TSizes.spaceBtwSections),
+
                 //   Categories
+                Padding(
+                  padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+                  child: Column(
+                    children: [
+                      Text('Popular Categories', style: Theme.of(context).textTheme.headlineSmall)
+                    ],
+                  ),
+                )
               ],
             ))
           ],

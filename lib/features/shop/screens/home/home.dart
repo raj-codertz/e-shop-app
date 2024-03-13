@@ -6,6 +6,7 @@ import 'package:raj_store_app/utils/constants/image_strings.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/images/t_rounded_image.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,12 +14,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Header
-            const TPrimaryHeaderContainer(
+            TPrimaryHeaderContainer(
                 child: Column(
               children: [
                 // Appbar
@@ -50,12 +51,9 @@ class HomeScreen extends StatelessWidget {
             )),
 
             //   Body
-            Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(TSizes.md)),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(TSizes.md),
-                  child: Image(image: AssetImage(TImages.promoBanner3))),
+            Padding(
+              padding: EdgeInsets.all(TSizes.defaultSpace),
+              child: TRoundedImage(imageUrl: TImages.promoBanner3),
             )
           ],
         ),

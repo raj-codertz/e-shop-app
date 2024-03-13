@@ -24,7 +24,7 @@ class THomeAppBar extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .headlineSmall!
-                  .apply(color: TColors.grey)),
+                  .apply(color: TColors.white)),
         ],
       ),
       actions: [

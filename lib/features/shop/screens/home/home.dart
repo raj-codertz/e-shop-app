@@ -3,6 +3,7 @@ import 'package:raj_store_app/features/shop/screens/home/widgets/home_appbar.dar
 import 'package:raj_store_app/utils/constants/colors.dart';
 import 'package:raj_store_app/utils/constants/image_strings.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
+import 'package:raj_store_app/utils/helpers/helper_functions.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
@@ -48,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                             itemCount: 6,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (_, index) {
-                              return const TVerticalImageText();
+                              return TVerticalImageText(image: TImages.shoeIcon, title: 'Shoes', onTap: () {});
                             }),
                       )
                     ],
@@ -69,7 +70,7 @@ class TVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = TColors.white,
-    this.backgroundColor,
+    this.backgroundColor = TColors.white,
     this.onTap,
   });
 
@@ -80,6 +81,8 @@ class TVerticalImageText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
+
     return GestureDetector(
       onTap: onTap,
       child: Padding(
@@ -92,13 +95,13 @@ class TVerticalImageText extends StatelessWidget {
               height: 56,
               padding: const EdgeInsets.all(TSizes.sm),
               decoration: BoxDecoration(
-                  color: backgroundColor,
+                  color: backgroundColor ?? ( dark ? TColors.black : TColors.white),
                   borderRadius: BorderRadius.circular(100)),
               child: Center(
                 child: Image(
                     image: AssetImage(image),
                     fit: BoxFit.cover,
-                    color: TColors.dark),
+                    color: dark ? TColors.light: TColors.dark),
               ),
             ),
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raj_store_app/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:raj_store_app/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:raj_store_app/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:raj_store_app/features/shop/screens/home/widgets/promo_slider.dart';
@@ -53,11 +54,19 @@ class HomeScreen extends StatelessWidget {
             //   Body
             Padding(
               padding: EdgeInsets.all(TSizes.defaultSpace),
-              child: TPromoSlider(banners: [
-                TImages.promoBanner1,
-                TImages.promoBanner2,
-                TImages.promoBanner3
-              ]),
+              child: Column(
+                children: [
+                  // Promo Slider
+                  TPromoSlider(banners: [
+                    TImages.promoBanner1,
+                    TImages.promoBanner2,
+                    TImages.promoBanner3
+                  ]),
+
+                //   Popular Products
+                TProductCardVertical()
+                ],
+              ),
             )
           ],
         ),

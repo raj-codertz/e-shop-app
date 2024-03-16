@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                     TImages.promoBanner2,
                     TImages.promoBanner3
                   ]),
-
+               SizedBox(height: TSizes.spaceBtwSections),
                 //   Popular Products
                 TProductCardVertical()
                 ],

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:raj_store_app/common/styles/shadows.dart';
 import 'package:raj_store_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:raj_store_app/common/widgets/images/t_rounded_image.dart';
@@ -37,10 +39,18 @@ class TProductCardVertical extends StatelessWidget {
                 ),
 
               //   Sale Tag
-                TRoundedContainer(
-                  radius: TSizes.sm,
-                  backgroundColor: TColors.secondary.withOpacity(0.8),
-                )
+                Positioned(
+                  top: 12,
+                  child: TRoundedContainer(
+                    radius: TSizes.sm,
+                    backgroundColor: TColors.secondary.withOpacity(0.8),
+                    padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
+                    child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black)),
+                  ),
+                ),
+                
+              //   Favourite Icon Button
+                TCircularIcon(dark: dark)
               ],
             ),
           )

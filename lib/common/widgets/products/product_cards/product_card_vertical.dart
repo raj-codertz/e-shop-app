@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:raj_store_app/common/styles/shadows.dart';
 import 'package:raj_store_app/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -8,6 +9,8 @@ import 'package:raj_store_app/utils/constants/colors.dart';
 import 'package:raj_store_app/utils/constants/image_strings.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import 'package:raj_store_app/utils/helpers/helper_functions.dart';
+
+import '../../icons/t_circular_icon.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({super.key});
@@ -38,23 +41,47 @@ class TProductCardVertical extends StatelessWidget {
                   applyImageRadius: true,
                 ),
 
-              //   Sale Tag
+                //   Sale Tag
                 Positioned(
                   top: 12,
                   child: TRoundedContainer(
                     radius: TSizes.sm,
                     backgroundColor: TColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
-                    child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: TSizes.sm, vertical: TSizes.xs),
+                    child: Text('25%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: TColors.black)),
                   ),
                 ),
-                
-              //   Favourite Icon Button
-                TCircularIcon(dark: dark)
+
+                //   Favourite Icon Button
+                const Positioned(
+                    top: 0,
+                    right: 0,
+                    child:
+                        TCircularIcon(icon: Iconsax.heart5, color: Colors.red))
+              ],
+            ),
+          ),
+
+          //   Details
+          Padding(
+            padding: const EdgeInsets.only(left: TSizes.sm),
+            child: Column(
+              children: [
+                Text(
+                  'Green Nike Air Shoes',
+                  style: Theme.of(context).textTheme.labelLarge,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.left,
+                )
               ],
             ),
           )
-          //   Details
         ],
       ),
     );

@@ -8,6 +8,7 @@ import 'package:raj_store_app/utils/constants/image_strings.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import 'package:raj_store_app/utils/helpers/helper_functions.dart';
 import '../../icons/t_circular_icon.dart';
+import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
 class TProductCardVertical extends StatelessWidget {
@@ -88,7 +89,7 @@ class TProductCardVertical extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //   Price
-                      TProductPriceText(),
+                      const TProductPriceText(price: '56.4',),
                       Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(

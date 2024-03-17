@@ -88,10 +88,7 @@ class TProductCardVertical extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //   Price
-                      Text('\$76',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.headlineMedium),
+                      TProductPriceText(),
                       Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(

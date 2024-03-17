@@ -8,6 +8,7 @@ import 'package:raj_store_app/utils/constants/image_strings.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import 'package:raj_store_app/utils/helpers/helper_functions.dart';
 import '../../icons/t_circular_icon.dart';
+import '../../texts/product_title_text.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({super.key});
@@ -33,9 +34,7 @@ class TProductCardVertical extends StatelessWidget {
             child: Stack(
               children: [
                 //   Thumbnail Image
-                const TRoundedImage(
-                  imageUrl: TImages.productImage1
-                ),
+                const TRoundedImage(imageUrl: TImages.productImage1),
 
                 //   Sale Tag
                 Positioned(
@@ -57,22 +56,40 @@ class TProductCardVertical extends StatelessWidget {
                 const Positioned(
                     top: 0,
                     right: 0,
-                    child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red))
+                    child:
+                        TCircularIcon(icon: Iconsax.heart5, color: Colors.red))
               ],
             ),
           ),
+          const SizedBox(height: TSizes.spaceBtwItems / 2),
 
           //   Details
           Padding(
             padding: const EdgeInsets.only(left: TSizes.sm),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Green Nike Air Shoe',
-                  style: Theme.of(context).textTheme.labelLarge,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  textAlign: TextAlign.left,
+                const TProductTitleText(
+                    title: 'Green Nike Air Shoe', smallSize: true),
+                const SizedBox(height: TSizes.spaceBtwItems / 2),
+                Row(
+                  children: [
+                    Text('Nike',
+                        style: Theme.of(context).textTheme.labelMedium,
+                        overflow: TextOverflow.ellipsis),
+                    const SizedBox(width: TSizes.xs),
+                    const Icon(Iconsax.verify5,
+                        color: TColors.primary, size: TSizes.iconXs)
+                  ],
+                ),
+                Row(
+                  children: [
+                    //   Price
+                    Text('\$76',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.headlineMedium)
+                  ],
                 )
               ],
             ),

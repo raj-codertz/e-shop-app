@@ -85,30 +85,40 @@ class TProductCardVertical extends StatelessWidget {
                           color: TColors.primary, size: TSizes.iconXs)
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //   Price
-                      const TProductPriceText(price: '56.4',),
-                      Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(TSizes.cardRadiusMd),
-                              bottomRight:
-                                  Radius.circular(TSizes.productImageRadius)),
-                          color: TColors.dark,
-                        ),
-                        child: const SizedBox(
-                            width: TSizes.iconLg * 1.2,
-                            height: TSizes.iconLg * 1.2,
-                            child: Center(
-                                child:
-                                    Icon(Iconsax.add, color: TColors.white))),
-                      )
-                    ],
-                  )
                 ],
               ),
+            ),
+
+            // Add spacer () here to keep the height of each box some in case 1 or 2 lines of headings
+            const Spacer(),
+
+            // Price Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //   Price
+
+                const Padding(
+                  padding: EdgeInsets.only(left: TSizes.sm),
+                  child: TProductPriceText(price: '56.4'),
+                ),
+
+                // Add to Cart Button
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(TSizes.cardRadiusMd),
+                        bottomRight:
+                            Radius.circular(TSizes.productImageRadius)),
+                    color: TColors.dark,
+                  ),
+                  child: const SizedBox(
+                      width: TSizes.iconLg * 1.2,
+                      height: TSizes.iconLg * 1.2,
+                      child: Center(
+                          child: Icon(Iconsax.add, color: TColors.white))),
+                )
+              ],
             )
           ],
         ),

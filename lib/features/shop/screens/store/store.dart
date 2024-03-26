@@ -5,6 +5,7 @@ import 'package:raj_store_app/common/widgets/custom_shapes/containers/search_con
 import 'package:raj_store_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:raj_store_app/common/widgets/texts/section_heading.dart';
 import 'package:raj_store_app/utils/constants/colors.dart';
+import 'package:raj_store_app/utils/constants/image_strings.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import 'package:raj_store_app/utils/helpers/helper_functions.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
@@ -52,14 +53,25 @@ class StoreScreen extends StatelessWidget {
                     TSectionHeading(title: 'Featured Brands', onPressed: () {}),
                     const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
-                    const TRoundedContainer(
-                      padding: EdgeInsets.all(TSizes.sm),
+                    TRoundedContainer(
+                      padding: const EdgeInsets.all(TSizes.sm),
                       showBorder: true,
                       backgroundColor: Colors.transparent,
                       child: Row(
                         children: [
                           //   Icon
-                          TCircularImage()
+                          TCircularImage(
+                              backgroundColor: Colors.transparent,
+                              overlayColor: THelperFunctions.isDarkMode(context)
+                                  ? TColors.white
+                                  : TColors.black,
+                              image: TImages.clothIcon),
+                          const SizedBox(height: TSizes.spaceBtwItems / 2),
+
+                        //   Text
+                          Column(
+
+                          )
                         ],
                       ),
                     )

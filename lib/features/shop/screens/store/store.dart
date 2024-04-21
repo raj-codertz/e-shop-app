@@ -1,10 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:raj_store_app/common/widgets/app_bar/appbar.dart';
 import 'package:raj_store_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:raj_store_app/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:raj_store_app/common/widgets/layouts/grid_layout.dart';
 import 'package:raj_store_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:raj_store_app/common/widgets/texts/section_heading.dart';
+import 'package:raj_store_app/common/widgets/texts/t_brand_title_with_verified_icon.dart';
 import 'package:raj_store_app/utils/constants/colors.dart';
+import 'package:raj_store_app/utils/constants/enums.dart';
 import 'package:raj_store_app/utils/constants/image_strings.dart';
 import 'package:raj_store_app/utils/constants/sizes.dart';
 import 'package:raj_store_app/utils/helpers/helper_functions.dart';
@@ -53,28 +58,48 @@ class StoreScreen extends StatelessWidget {
                     TSectionHeading(title: 'Featured Brands', onPressed: () {}),
                     const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
-                    TRoundedContainer(
-                      padding: const EdgeInsets.all(TSizes.sm),
-                      showBorder: true,
-                      backgroundColor: Colors.transparent,
-                      child: Row(
-                        children: [
-                          //   Icon
-                          TCircularImage(
-                              backgroundColor: Colors.transparent,
-                              overlayColor: THelperFunctions.isDarkMode(context)
-                                  ? TColors.white
-                                  : TColors.black,
-                              image: TImages.clothIcon),
-                          const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    TGridLayout(itemCount: 4, mainAxisExtent: 80, itemBuilder: (_, index) {
+                      return GestureDetector(
+                        onTap: () {},
+                        child: TRoundedContainer(
+                          padding: const EdgeInsets.all(TSizes.sm),
+                          showBorder: true,
+                          backgroundColor: Colors.transparent,
+                          child: Row(
+                            children: [
+                              //   Icon
+                              // Aim of this is to take space neede to that image
+                              Flexible(
+                                child: TCircularImage(
+                                    backgroundColor: Colors.transparent,
+                                    overlayColor: THelperFunctions.isDarkMode(context)
+                                        ? TColors.white
+                                        : TColors.black,
+                                    image: TImages.clothIcon),
+                              ),
+                              const SizedBox(height: TSizes.spaceBtwItems / 2),
 
-                        //   Text
-                          Column(
-
-                          )
-                        ],
-                      ),
-                    )
+                              //   Text
+                              // Aim of using Expanded widget is to take max space
+                              Expanded(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.large),
+                                    Text(
+                                      '256 products',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Theme.of(context).textTheme.labelMedium,
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    })
                   ],
                 ),
               ),

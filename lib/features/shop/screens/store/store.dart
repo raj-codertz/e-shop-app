@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:raj_store_app/common/widgets/app_bar/appbar.dart';
 import 'package:raj_store_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:raj_store_app/common/widgets/custom_shapes/containers/search_container.dart';
@@ -20,93 +18,119 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: TAppbar(
-        title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-        actions: [TCartCounterIcon(onPressed: () {})],
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (_, innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              pinned: true,
-              floating: true,
-              backgroundColor: THelperFunctions.isDarkMode(context)
-                  ? TColors.dark
-                  : TColors.white,
-              expandedHeight: 440,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.all(TSizes.defaultSpace),
-
-                // since i want to put thing vertically i cant use column here
-                // cause of its unbounded height hence listview is suitable
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    //   Search Bar
-                    const SizedBox(height: TSizes.spaceBtwItems),
-                    const TSearchContainer(
-                        text: 'Search in Store',
-                        showBorder: true,
-                        showBackground: false,
-                        padding: EdgeInsets.all(0)),
-                    const SizedBox(height: TSizes.spaceBtwSections),
-
-                    //     Featured Brands
-                    TSectionHeading(title: 'Featured Brands', onPressed: () {}),
-                    const SizedBox(height: TSizes.spaceBtwItems / 1.5),
-
-                    TGridLayout(itemCount: 4, mainAxisExtent: 80, itemBuilder: (_, index) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: TRoundedContainer(
-                          padding: const EdgeInsets.all(TSizes.sm),
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: TAppbar(
+          title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
+          actions: [TCartCounterIcon(onPressed: () {})],
+        ),
+        body: NestedScrollView(
+          headerSliverBuilder: (_, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                pinned: true,
+                floating: true,
+                backgroundColor: THelperFunctions.isDarkMode(context)
+                    ? TColors.dark
+                    : TColors.white,
+                expandedHeight: 440,
+                flexibleSpace: Padding(
+                  padding: const EdgeInsets.all(TSizes.defaultSpace),
+                  // since i want to put thing vertically i cant use column here
+                  // cause of its unbounded height hence listview is suitable
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      //   Search Bar
+                      const SizedBox(height: TSizes.spaceBtwItems),
+                      const TSearchContainer(
+                          text: 'Search in Store',
                           showBorder: true,
-                          backgroundColor: Colors.transparent,
-                          child: Row(
-                            children: [
-                              //   Icon
-                              // Aim of this is to take space neede to that image
-                              Flexible(
-                                child: TCircularImage(
-                                    backgroundColor: Colors.transparent,
-                                    overlayColor: THelperFunctions.isDarkMode(context)
-                                        ? TColors.white
-                                        : TColors.black,
-                                    image: TImages.clothIcon),
-                              ),
-                              const SizedBox(height: TSizes.spaceBtwItems / 2),
+                          showBackground: false,
+                          padding: EdgeInsets.all(0)),
+                      const SizedBox(height: TSizes.spaceBtwSections),
 
-                              //   Text
-                              // Aim of using Expanded widget is to take max space
-                              Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      //     Featured Brands
+                      TSectionHeading(title: 'Featured Brands', onPressed: () {}),
+                      const SizedBox(height: TSizes.spaceBtwItems / 1.5),
+
+                      TGridLayout(
+                          itemCount: 4,
+                          mainAxisExtent: 80,
+                          itemBuilder: (_, index) {
+                            return GestureDetector(
+                              onTap: () {},
+                              child: TRoundedContainer(
+                                padding: const EdgeInsets.all(TSizes.sm),
+                                showBorder: true,
+                                backgroundColor: Colors.transparent,
+                                child: Row(
                                   children: [
-                                    const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.large),
-                                    Text(
-                                      '256 products',
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                    //   Icon
+                                    // Aim of this is to take space needed to that image
+                                    Flexible(
+                                      child: TCircularImage(
+                                          backgroundColor: Colors.transparent,
+                                          overlayColor:
+                                              THelperFunctions.isDarkMode(context)
+                                                  ? TColors.white
+                                                  : TColors.black,
+                                          image: TImages.clothIcon),
+                                    ),
+                                    const SizedBox(
+                                        height: TSizes.spaceBtwItems / 2),
+
+                                    //   Text
+                                    // Aim of using Expanded widget is to take max space
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const TBrandTitleWithVerifiedIcon(
+                                              title: 'Nike',
+                                              brandTextSize: TextSizes.large),
+                                          Text(
+                                            '256 products',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelMedium,
+                                          )
+                                        ],
+                                      ),
                                     )
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    })
-                  ],
+                              ),
+                            );
+                          })
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ];
-        },
-        body: Container(),
+
+              //   Tab bar
+                bottom: TabBar(
+                  isScrollable: true,
+                  indicatorColor: TColors.primary,
+                  unselectedLabelColor: TColors.darkerGrey,
+                  labelColor: THelperFunctions.isDarkMode(context) ? TColors.white : TColors.primary,
+                  tabs: const [
+                  Tab(child: Text('Sports')),
+                  Tab(child: Text('Furniture')),
+                  Tab(child: Text('Electronics')),
+                  Tab(child: Text('Clothes')),
+                  Tab(child: Text('Cosmetics')),
+                ],),
+              )
+            ];
+          },
+          body: Container(),
+        ),
       ),
     );
   }
